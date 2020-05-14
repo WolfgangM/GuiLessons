@@ -1,6 +1,6 @@
 import csv
 import os
-from tkinter import *
+import tkinter
 from tkinter.ttk import Combobox
 
 from page import Page
@@ -45,7 +45,7 @@ class Distances(Page):
 
         global distance_equation
 
-        distance_equation = StringVar()
+        distance_equation = tkinter.StringVar()
         distance_equation.set('Choose two different cities')
 
         path = os.path.abspath(os.path.dirname(__file__))
@@ -54,8 +54,8 @@ class Distances(Page):
         data_list = list(csv.reader(file))
         options = data_list[0]
 
-        label_one = Label(self, text='City #1')
-        label_one.grid(row=0, column=0, sticky=N + W)
+        label_one = tkinter.Label(self, text='City #1')
+        label_one.grid(row=0, column=0, sticky=tkinter.N + tkinter.W)
 
         master = self
 
@@ -63,24 +63,25 @@ class Distances(Page):
             combo_select_cb(master, combo_one, combo_two, options, data_list)
 
         combo_one = Combobox(self, values=options, state="readonly")
-        combo_one.grid(row=0, column=1, columnspan=3, sticky=N + S + E + W)
+        combo_one.grid(row=0, column=1, columnspan=3, sticky=tkinter.N + tkinter.S + tkinter.E + tkinter.W)
         combo_one.current(0)
         combo_one.bind("<<ComboboxSelected>>", combo_callback)
 
-        label_two = Label(self, text='City #2')
-        label_two.grid(row=1, column=0, sticky=N + W)
+        label_two = tkinter.Label(self, text='City #2')
+        label_two.grid(row=1, column=0, sticky=tkinter.N + tkinter.W)
 
         combo_two = Combobox(self, values=options, state="readonly")
-        combo_two.grid(row=1, column=1, columnspan=3, sticky=N + S + E + W)
+        combo_two.grid(row=1, column=1, columnspan=3, sticky=tkinter.N + tkinter.S + tkinter.E + tkinter.W)
         combo_two.current(0)
         combo_two.bind("<<ComboboxSelected>>", combo_callback)
 
-        label_three = Label(self, text='Distance')
-        label_three.grid(row=2, column=0, sticky=N + W)
+        label_three = tkinter.Label(self, text='Distance')
+        label_three.grid(row=2, column=0, sticky=tkinter.N + tkinter.W)
 
-        expression_field = Entry(self, textvariable=distance_equation)
+        expression_field = tkinter.Entry(self, textvariable=distance_equation)
         expression_field.configure(state='readonly')
-        expression_field.grid(row=2, column=1, columnspan=3, ipadx=70, sticky=N + S + E + W)
+        expression_field.grid(row=2, column=1, columnspan=3, ipadx=70, sticky=tkinter.N + tkinter.S + tkinter.E + tkinter.W)
 
-        reset_button = Button(self, text='Reset', command=lambda: reset_distance(combo_one, combo_two), height=1, width=7)
-        reset_button.grid(row=3, column=0, columnspan=4, ipadx=70, sticky=N + S + E + W)
+        reset_button = tkinter.Button(self, text='Reset', command=lambda: reset_distance(combo_one, combo_two), height=1,
+                                      width=7)
+        reset_button.grid(row=3, column=0, columnspan=4, ipadx=70, sticky=tkinter.N + tkinter.S + tkinter.E + tkinter.W)
