@@ -1,7 +1,9 @@
 import math
 
+from page import Page
 
-def faculty(self):
+
+def faculty(self: Page) -> Page:
     try:
 
         expr = math.factorial(int(self.calculator_expr))
@@ -16,7 +18,7 @@ def faculty(self):
     return self
 
 
-def calc_sqrt(self):
+def calc_sqrt(self: Page) -> Page:
     try:
 
         expr = math.sqrt(int(self.calculator_expr))
@@ -31,14 +33,14 @@ def calc_sqrt(self):
     return self
 
 
-def clear(self):
+def clear(self: Page) -> Page:
     self.calculator_equation.set("")
     self.calculator_expr = ""
 
     return self
 
 
-def equal_press(self):
+def equal_press(self: Page) -> Page:
     try:
 
         total = str(eval(self.calculator_expr))
@@ -53,7 +55,7 @@ def equal_press(self):
     return self
 
 
-def press(self, num):
+def press(self: Page, num: int) -> Page:
     try:
 
         expr = self.calculator_expr + str(num)

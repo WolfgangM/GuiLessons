@@ -1,12 +1,16 @@
 from lessons.lesson_one.distances import *
 from lessons.lesson_two.calculator import *
 
-initial_frame = 0
-sub_frames = (Distances, Calculator)
 
-
-def init_sub_frames(master, cnt, frames, bt_frame):
-
+def init_sub_frames(master: Frame, cnt: Frame, frames: [], bt_frame: Frame, initial_frame: int):
+    """
+    Create sub-frames and control-buttons
+    :param master:
+    :param cnt:
+    :param frames:
+    :param bt_frame:
+    :param initial_frame:
+    """
     store = []
 
     for frame_index, F in enumerate(frames):
@@ -24,13 +28,17 @@ class MainView(Frame):
 
     def __init__(self, *args, **kwargs):
         Frame.__init__(self, *args, **kwargs)
+        super().__init__(**kwargs)
+
+        initial_frame = 0
+        sub_frames = (Distances, Calculator)
 
         button_frame = Frame(self)
         container = Frame(self)
         button_frame.pack(side="top", fill="x", expand=False)
         container.pack(side="top", fill="both", expand=True)
 
-        init_sub_frames(self, container, sub_frames, button_frame)
+        init_sub_frames(self, container, sub_frames, button_frame, initial_frame)
 
 
 if __name__ == "__main__":
