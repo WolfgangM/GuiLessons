@@ -9,28 +9,28 @@ class Calculator(Page):
         Page.__init__(self, *args, **kwargs)
 
         # Define class-attributes
-        self.button_definition = []
-        self.calculator_expr = ""
-        self.calculator_equation = StringVar()
-        self.calculator_equation.set('enter your expression')
+        self.button_def = []
+        self.expr = ""
+        self.equation = StringVar()
+        self.equation.set('enter your expression')
 
         # Get button definition array
         get_button_def(self)
 
         # Create and set expression field
-        expression_field = Entry(self, textvariable=self.calculator_equation)
-        expression_field.grid(columnspan=4, ipadx=70)
+        exp_field = Entry(self, textvariable=self.equation)
+        exp_field.grid(columnspan=4, ipadx=70)
 
         # Create and set calculator buttons
-        for row_id, button_row in enumerate(self.button_definition):
+        for row_id, button_row in enumerate(self.button_def):
 
             for cell_id, button_cell in enumerate(button_row):
-                button_entry = self.button_definition[row_id][cell_id]
+                button_entry = self.button_def[row_id][cell_id]
 
                 button = Button(self,
                                 text=button_entry['label'],
-                                fg='black',
-                                bg='red',
+                                fg='white',
+                                bg='blue',
                                 command=button_entry['command'],
                                 height=1,
                                 width=7)

@@ -2,7 +2,7 @@ from lessons.lesson_two.calc_methods import *
 
 
 def get_button_def(self: Page) -> Page:
-    self.button_definition = [
+    self.button_def = [
         [
             {'label': '7', 'command': lambda: press(self, 7), 'column': 0, 'columnspan': 1},
             {'label': '8', 'command': lambda: press(self, 8), 'column': 1, 'columnspan': 1},

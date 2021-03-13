@@ -9,10 +9,10 @@ def faculty(self: Page) -> Page:
         expr = math.factorial(int(self.calculator_expr))
 
         self.calculator_expr = expr
-        self.calculator_equation.set(expr)
+        self.equation.set(expr)
 
     except:
-        self.calculator_equation.set(" error ")
+        self.equation.set(" error ")
         self.calculator_expr = ""
 
     return self
@@ -24,17 +24,17 @@ def calc_sqrt(self: Page) -> Page:
         expr = math.sqrt(int(self.calculator_expr))
 
         self.calculator_expr = expr
-        self.calculator_equation.set(expr)
+        self.equation.set(expr)
 
     except:
-        self.calculator_equation.set(" error ")
+        self.equation.set(" error ")
         self.calculator_expr = ""
 
     return self
 
 
 def clear(self: Page) -> Page:
-    self.calculator_equation.set("")
+    self.equation.set("")
     self.calculator_expr = ""
 
     return self
@@ -45,11 +45,11 @@ def equal_press(self: Page) -> Page:
 
         total = str(eval(self.calculator_expr))
 
-        self.calculator_equation.set(total)
+        self.equation.set(total)
         self.calculator_expr = ""
 
     except:
-        self.calculator_equation.set(" error ")
+        self.equation.set(" error ")
         self.calculator_expr = ""
 
     return self
@@ -61,11 +61,11 @@ def press(self: Page, num: int) -> Page:
         expr = self.calculator_expr + str(num)
 
         self.calculator_expr = expr
-        self.calculator_equation.set(expr)
+        self.equation.set(expr)
 
     except:
 
-        self.calculator_equation.set(" error ")
+        self.equation.set(" error ")
         self.calculator_expr = ""
 
     return self
